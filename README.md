@@ -1,4 +1,4 @@
-# OptiWare Monorepo Example
+# Monorepo Example
 
 This repository demonstrates a modern [Turborepo](https://turborepo.com/) monorepo setup with full-stack TypeScript, Prisma, Next.js, and shared tooling.
 
