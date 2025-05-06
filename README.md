@@ -1,82 +1,130 @@
-# Turborepo starter
+# OptiWare Monorepo Example
 
-This Turborepo starter is maintained by the Turborepo core team.
+This repository demonstrates a modern [Turborepo](https://turborepo.com/) monorepo setup with full-stack TypeScript, Prisma, Next.js, and shared tooling.
 
-## Using this example
+---
 
-Run the following command:
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
 
 ```sh
-npx create-turbo@latest
+git clone <your-repo-url>
+cd monorepo_example
+npm install
 ```
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## ⚙️ Environment Variables
 
-### Apps and Packages
+### API App (`apps/api`)
 
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Create a file at `apps/api/.env` with the following variables:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```env
+DATABASE_URL=your_postgres_connection_string
+PORT=8080 [or whatever port you want]
 ```
 
-### Develop
+- `DATABASE_URL`: Your PostgreSQL connection string for Prisma.
+- `PORT`: The port your API server will run on (default: 8080).
 
-To develop all apps and packages, run the following command:
+### Web App (`apps/web`)
+
+Create a file at `apps/web/.env` with the following variable:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+```
+
+- `NEXT_PUBLIC_API_URL`: The URL where your API server is running.
+
+---
+
+## 🗄️ Database Setup
+
+1. Copy your `.env` file as shown above and set your `DATABASE_URL`.
+2. Generate the Prisma client:
+
+```sh
+npx prisma migrate dev --name "your_migration_name" [this will migrate your db and generate a prisma client for you]
+```
+
+---
+
+## 🧑‍💻 Development
+
+To start all apps and packages in development mode:
+
+```sh
+npm run dev
+```
+
+---
+
+## 🏗️ Project Structure
 
 ```
-cd my-turborepo
-pnpm dev
+apps/
+  api/        # NestJS + tRPC + Prisma API
+  web/        # Next.js frontend
+packages/
+  types/             # Shared TypeScript types and Zod schemas
+  eslint-config/     # Shared ESLint config
+  typescript-config/ # Shared tsconfig.json
 ```
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 🛠️ Tooling
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- **TypeScript** for static type checking
+- **ESLint** for code linting
+- **Prettier** for code formatting
+- **Prisma** for database ORM
+- **tRPC** for end-to-end typesafe APIs
+- **Zod** for runtime validation and OpenAPI schema generation
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+---
 
-```
-cd my-turborepo
+## 🧩 Useful Scripts
+
+| Script                | Description                       |
+| --------------------- | --------------------------------- |
+| `npm run dev`         | Run all apps/packages in dev mode |
+| `npm run build`       | Build all apps/packages           |
+| `npm run lint`        | Lint all code                     |
+| `npm run format`      | Format all code with Prettier     |
+| `npm run generate`    | Generate Prisma client            |
+| `npm run check-types` | Type-check all packages           |
+
+---
+
+## 🗄️ Remote Caching
+
+Turborepo supports [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) with Vercel for faster CI and team workflows.
+
+To enable:
+
+```sh
 npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
 npx turbo link
 ```
 
-## Useful Links
+---
 
-Learn more about the power of Turborepo:
+## 📚 Resources
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+- [Turborepo Docs](https://turborepo.com/docs)
+- [Next.js Docs](https://nextjs.org/docs)
+- [NestJS Docs](https://docs.nestjs.com/)
+- [Prisma Docs](https://www.prisma.io/docs/)
+- [tRPC Docs](https://trpc.io/docs)
+- [Zod Docs](https://zod.dev/)
+
+---
+
+## 📝 License
+
+MIT
