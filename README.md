@@ -84,7 +84,11 @@ packages/
 - **Prettier** for code formatting
 - **Prisma** for database ORM
 - **tRPC** for end-to-end typesafe APIs
-- **Zod** for runtime validation and OpenAPI schema generation
+- **Zod** for runtime validation
+- **zod-openapi** for generating OpenAPI schemas from Zod
+- **trpc-to-openapi** for generating OpenAPI docs from tRPC routers
+- **Tailwind CSS** for utility-first styling in the frontend
+- **shadcn/ui** for accessible, customizable React UI components
 
 ---
 
@@ -98,19 +102,6 @@ packages/
 | `npm run format`      | Format all code with Prettier     |
 | `npm run generate`    | Generate Prisma client            |
 | `npm run check-types` | Type-check all packages           |
-
----
-
-## 🗄️ Remote Caching
-
-Turborepo supports [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) with Vercel for faster CI and team workflows.
-
-To enable:
-
-```sh
-npx turbo login
-npx turbo link
-```
 
 ---
 
