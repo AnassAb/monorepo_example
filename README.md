@@ -9,7 +9,7 @@ This repository demonstrates a modern [Turborepo](https://turborepo.com/) monore
 Clone the repo and install dependencies:
 
 ```sh
-git clone <your-repo-url>
+git clone https://github.com/AnassAb/monorepo_example.git
 cd monorepo_example
 npm install
 ```
