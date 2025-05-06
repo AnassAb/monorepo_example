@@ -1,0 +1,26 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "prebuild": "npm run generate",
+    "generate": "npx prisma generate --schema=./apps/api/prisma/schema.prisma",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.2",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@11.2.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
